@@ -7,6 +7,12 @@ namespace JSONTools
 {
     public static class ExcelMatrix
     {
+        /// <summary>
+        /// Serializes a matrix of objects to JSON
+        /// </summary>
+        /// <param name="data">The matrix of objects to serialize.</param>
+        /// <param name="handlers">Funcs describing how to handle specific keys.</param>
+        /// <returns>The JSON from the serialized object matrix.</returns>
         public static string ToJson(IEnumerable<IEnumerable<object>> data,
             Dictionary<string, Func<object, object>> handlers = null)
         {
@@ -15,6 +21,12 @@ namespace JSONTools
                 handlers);
         }
 
+        /// <summary>
+        /// Serializes a matrix of objects to JSON
+        /// </summary>
+        /// <param name="data">The matrix of objects to serialize.</param>
+        /// <param name="handlers">Funcs describing how to handle specific keys.</param>
+        /// <returns>The JSON from the serialized object matrix.</returns>
         public static string ToJson(
             IReadOnlyList<IReadOnlyList<object>> data,
             Dictionary<string, Func<object, object>> handlers = null)
@@ -69,6 +81,13 @@ namespace JSONTools
             return JsonConvert.SerializeObject(dictionaries);
         }
 
+        /// <summary>
+        /// Deserializes the JSON to the specified .NET type.
+        /// </summary>
+        /// <typeparam name="T">The type of the object to deserialize to.</typeparam>
+        /// <param name="data">The matrix of objects to deserialize.</param>
+        /// <param name="handlers">Funcs describing how to handle specific keys.</param>
+        /// <returns>The deserialized objects from the matrix of objects.</returns>
         public static IReadOnlyList<T> Deserialize<T>(
             IEnumerable<IEnumerable<object>> data,
             Dictionary<string, Func<object, object>> handlers = null)
